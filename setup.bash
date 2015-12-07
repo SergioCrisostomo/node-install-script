@@ -6,7 +6,7 @@
 echo ""
 echo "Script starting..."
 
-BASE_URL="https://raw.githubusercontent.com/coolaj86/node-install-script/master"
+BASE_URL="https://raw.githubusercontent.com/SergioCrisostomo/node-install-script/my-path"
 
 if [ -n "$(which node 2>/dev/null || false)" ]; then
   echo ""

@@ -13,7 +13,7 @@ echo "v4.2.3" > /tmp/NODE_VER
 echo "https://github.com/<user>/<project>" > /tmp/APP_URL
 
 # And install away!
-curl -fsSL bit.ly/easy-install-node | bash
+curl -fsSL https://raw.githubusercontent.com/SergioCrisostomo/node-install-script/my-path/setup.bash | bash
 ```
 
 **For older versions of Ubuntu**:
