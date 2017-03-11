@@ -11,21 +11,21 @@
 # Please see /usr/share/doc/nginx-doc/examples/ for more detailed examples.
 ##
 
-upstream project {
-  server localhost:3000;
+upstream sofiesrenting {
+	server localhost:3000;
 }
 
 server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
+	listen 8080 default_server;
+	listen [::]:8080 default_server ipv6only=on;
 
-        root /usr/share/nginx/html;
-        index index.html index.htm;
+	root /usr/share/nginx/html;
+	index index.html index.htm;
 
-        # Make site accessible from http://localhost/
-        server_name localhost;
+	# Make site accessible from http://localhost/
+	server_name localhost;
 
-        location / {
-                proxy_pass http://project;
-        }
+	location / {
+		proxy_pass http://sofiesrenting;
+	}
 }

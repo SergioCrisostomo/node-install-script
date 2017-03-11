@@ -28,7 +28,7 @@ echo "app url: $APP_URL"
 echo "node version: $NODE_VER"
 
 if [ -z "$NODE_VER" ]; then
-  NODE_VER="v4.2.3"
+  NODE_VER="v6.10.0"
 fi
 
 OS="unsupported"
@@ -159,7 +159,7 @@ fi
 
 # clone app
 if [[ $APP_URL ]]; then
-  sudo bash -c "cd /home/ && git clone ${APP_URL} node-app && cd node-app && npm install" 
+  sudo bash -c "cd /home/ && git clone ${APP_URL} sofiesrenting && cd sofiesrenting && npm install"
 fi
 
 # forever
@@ -168,7 +168,7 @@ wget --quiet "${BASE_URL}/config-files/forever-node-init.sh" -O /etc/init.d/fore
 sudo bash -c "chmod a+x /etc/init.d/forever"
 sudo bash -c "update-rc.d forever defaults"
 if [[ $APP_URL ]]; then
-  sudo bash -c "forever start /home/node-app/index.js"
+  sudo bash -c "forever start /home/sofiesrenting/index.js"
 fi
 
 # nginx
