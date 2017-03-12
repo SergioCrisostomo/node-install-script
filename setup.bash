@@ -163,12 +163,12 @@ if [[ $APP_URL ]]; then
 fi
 
 # forever
-sudo bash -c "npm -g install forever"
-wget --quiet "${BASE_URL}/config-files/forever-node-init.sh" -O /etc/init.d/forever || echo 'error downloading forever config script'
-sudo bash -c "chmod a+x /etc/init.d/forever"
-sudo bash -c "update-rc.d forever defaults"
+sudo bash -c "npm -g install pm2"
+sudo bash -c "cp /home/sofiesrenting/sofiesrenting.sh /etc/init.d/sofiesrenting"
+sudo bash -c "chmod a+x /etc/init.d/sofiesrenting"
+sudo bash -c "update-rc.d sofiesrenting defaults"
 if [[ $APP_URL ]]; then
-  sudo bash -c "forever start /home/sofiesrenting/index.js"
+  sudo bash -c "pm2 start /home/sofiesrenting/index.js --name sofiesrenting --env production"
 fi
 
 # nginx
