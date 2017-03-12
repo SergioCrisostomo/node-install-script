@@ -168,8 +168,10 @@ sudo bash -c "npm -g install mocha"
 # webpack
 sudo bash -c "npm -g install webpack"
 
-# forever
+# pm2
 sudo bash -c "npm -g install pm2"
+
+# add sofiesrenting to server restart process list
 sudo bash -c "cp /home/sofiesrenting/sofiesrenting.sh /etc/init.d/sofiesrenting"
 sudo bash -c "chmod a+x /etc/init.d/sofiesrenting"
 sudo bash -c "update-rc.d sofiesrenting defaults"
@@ -179,5 +181,8 @@ echo "installing nginx..."
 sudo bash -c "apt-get install -qq -y nginx < /dev/null" > /dev/null
 wget --quiet "${BASE_URL}/config-files/nginx-config" -O /etc/nginx/sites-enabled/default || echo 'error configuring nginx'
 sudo bash -c "service nginx reload"
+
+# run mysql deploy script
+sudo bash -c "/home/sofiesrenting/deploy_mysql.sh"
 
 echo ""
