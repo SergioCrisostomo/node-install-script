@@ -183,6 +183,7 @@ wget --quiet "${BASE_URL}/config-files/nginx-config" -O /etc/nginx/sites-enabled
 sudo bash -c "service nginx reload"
 
 # run mysql deploy script
+sudo chmod +x /home/sofiesrenting/deploy_mysql.sh
 sudo bash -c "/home/sofiesrenting/deploy_mysql.sh"
 
 echo ""
