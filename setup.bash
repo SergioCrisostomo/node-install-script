@@ -162,6 +162,12 @@ if [[ $APP_URL ]]; then
   sudo bash -c "cd /home/ && git clone ${APP_URL} sofiesrenting && cd sofiesrenting && npm install"
 fi
 
+# mocha
+sudo bash -c "npm -g install mocha"
+
+# webpack
+sudo bash -c "npm -g install webpack"
+
 # forever
 sudo bash -c "npm -g install pm2"
 sudo bash -c "cp /home/sofiesrenting/sofiesrenting.sh /etc/init.d/sofiesrenting"
@@ -169,6 +175,7 @@ sudo bash -c "chmod a+x /etc/init.d/sofiesrenting"
 sudo bash -c "update-rc.d sofiesrenting defaults"
 if [[ $APP_URL ]]; then
   sudo bash -c "pm2 start /home/sofiesrenting/index.js --name sofiesrenting --env production"
+  sudo bash -c "cd /home/sofiesrenting && webpack"
 fi
 
 # nginx
