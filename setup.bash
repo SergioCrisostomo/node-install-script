@@ -119,7 +119,7 @@ case "${OS}" in
     echo "wget --quiet ${BASE_URL}/setup-fedora.bash -O /tmp/install-node.bash || echo 'error downloading os setup script'"
     ;;
   ubuntu)
-    wget --quiet "${BASE_URL}/setup-ubuntu.bash" -O /tmp/install-node.bash || echo 'error downloading os setup script'
+    sudo wget --quiet "${BASE_URL}/setup-ubuntu.bash" -O /tmp/install-node.bash || echo 'error downloading os setup script'
     ;;
   yosemite)
     # mavericks
@@ -149,14 +149,6 @@ esac
 echo "${OS}" "${ARCH}"
 bash /tmp/install-node.bash "${NODE_VER}"
 
-# jshint
-if [ -z "$(which jshint | grep jshint)" ]; then
-  echo "installing jshint..."
-  npm install --silent jshint -g > /dev/null
-else
-  echo "jshint already installed"
-fi
-
 # clone app
 if [[ $APP_URL ]]; then
   sudo bash -c "cd /home/ && git clone ${APP_URL} sofiesrenting && cd sofiesrenting && npm install"
@@ -179,7 +171,7 @@ sudo bash -c "update-rc.d sofiesrenting defaults"
 # nginx
 echo "installing nginx..."
 sudo bash -c "apt-get install -qq -y nginx < /dev/null" > /dev/null
-wget --quiet "${BASE_URL}/config-files/nginx-config" -O /etc/nginx/sites-enabled/default || echo 'error configuring nginx'
+sudo wget --quiet "${BASE_URL}/config-files/nginx-config" -O /etc/nginx/sites-enabled/default || echo 'error configuring nginx'
 sudo bash -c "service nginx reload"
 
 # run mysql deploy script
