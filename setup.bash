@@ -3,6 +3,11 @@
 # curl -fsSL https://example.com/setup.bash | bash
 # wget -nv https://example.com/setup.bash -O - | bash
 
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
 echo ""
 echo "Script starting..."
 
